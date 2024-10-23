@@ -1,0 +1,56 @@
+# ブランチ保護ルールの設定ファイル
+
+branches:
+  - name: main # 対象のブランチ名（mainブランチ）
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 1 # マージ前に必要な承認レビューの数（1人）
+      enforce_admins: true # 管理者にもブランチ保護ルールを適用
+      required_status_checks:
+        strict: true # ステータスチェックが最新のコミットで成功していることを要求
+        contexts: [] # 必須のステータスチェック（空の場合、特定のチェックは要求しない）
+      restrictions: null # ブランチへのプッシュ制限（nullの場合、制限なし）
+
+  - name: staging # 対象のブランチ名（stagingブランチ）
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 1 # マージ前に必要な承認レビューの数（1人）
+      enforce_admins: true # 管理者にもブランチ保護ルールを適用
+      required_status_checks:
+        strict: true # ステータスチェックが最新のコミットで成功していることを要求
+        contexts: [] # 必須のステータスチェック（空の場合、特定のチェックは要求しない）
+      restrictions: null # ブランチへのプッシュ制限（nullの場合、制限なし）
+
+  - name: develop # 対象のブランチ名（developブランチ）
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 1 # マージ前に必要な承認レビューの数（1人）
+      enforce_admins: true # 管理者にもブランチ保護ルールを適用
+      required_status_checks:
+        strict: true # ステータスチェックが最新のコミットで成功していることを要求
+        contexts:
+          - Validate Source Branch # 必須のステータスチェック（後述のワークフローで定義）
+      restrictions: null # ブランチへのプッシュ制限（nullの場合、制限なし）
+
+# # 対象のブランチ名を指定
+# branch: main
+
+# # ブランチ保護の詳細設定
+# protection:
+#   # 必要なプルリクエストレビューの設定
+#   required_pull_request_reviews:
+#     # 承認が必要なレビューの数を指定（ここでは1人の承認が必要）
+#     required_approving_review_count: 1
+
+#   # 管理者にもブランチ保護ルールを適用するかどうか
+#   enforce_admins: true
+
+#   # 必要なステータスチェックの設定
+#   required_status_checks:
+#     # ステータスチェックが最新のものであることを要求する
+#     strict: true
+#     # マージ前に成功する必要のあるチェックのリスト（CI/CDツールのチェック名など）
+#     contexts: []
+
+#   # ブランチへのプッシュやマージを許可するユーザーやチームの制限
+#   restrictions: null # nullの場合、特定のユーザーやチームへの制限はなし
