@@ -35,6 +35,9 @@ jobs:
           path: ./build # React の場合はデフォルトで `build` フォルダが生成されます
 
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     permissions:
