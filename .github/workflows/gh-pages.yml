@@ -32,7 +32,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build # React の場合はデフォルトで `build` フォルダが生成されます
+          path: ./dist
 
   deploy:
     environment:
